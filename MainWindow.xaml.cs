@@ -35,7 +35,7 @@ namespace WolcenMod
         {
             InitializeComponent();
 
-            GetPath();
+            CheckPath();
             CheckBackupExists();
 
             combobox_type.ItemsSource = Enum.GetValues(typeof(Types)).Cast<Types>();
@@ -44,25 +44,21 @@ namespace WolcenMod
             combobox_tier.SelectedIndex = 0;
         }
 
-        private void GetPath()
+        private void CheckPath()
         {
-            if(File.Exists(Directory.GetCurrentDirectory() + "\\settings.txt"))
-            {
-                path = new StreamReader(Directory.GetCurrentDirectory() + "\\settings.txt").ReadToEnd();
-            }
-            else
+            if(Properties.Settings.Default.playerchest_path == string.Empty)
             {
                 MessageBox.Show("Select the path to your playerchest.json \n\n C:/Users/UserName/Saved Games/wolcen/savegames/playerchest.json");
                 OpenFileDialog openFileDialog = new OpenFileDialog();
-                if(openFileDialog.ShowDialog() == true)
+                if (openFileDialog.ShowDialog() == true)
                 {
-                    File.WriteAllText(Directory.GetCurrentDirectory() + "\\settings.txt", openFileDialog.FileName);
-                    path = openFileDialog.FileName;
+                    Properties.Settings.Default.playerchest_path = openFileDialog.FileName;
+                    Properties.Settings.Default.Save();
                 }
             }
 
-            if (path == string.Empty)
-                GetPath();
+            if (Properties.Settings.Default.playerchest_path == string.Empty)
+                CheckPath();
         }
 
         private void CheckBackupExists()
@@ -83,8 +79,8 @@ namespace WolcenMod
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
-                File.WriteAllText(Directory.GetCurrentDirectory() + "\\settings.txt", openFileDialog.FileName);
-                path = openFileDialog.FileName;
+                Properties.Settings.Default.playerchest_path = openFileDialog.FileName;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -99,7 +95,7 @@ namespace WolcenMod
             Dispatcher.Invoke(() => button_save.IsEnabled = false);
 
             // Load current chest data
-            string json = File.ReadAllText(path);
+            string json = File.ReadAllText(Properties.Settings.Default.playerchest_path);
             chest = JsonConvert.DeserializeObject<Chest>(json);
 
             KeyValuePair<int, int> chosen_item_slot = new KeyValuePair<int, int>(-1, -1);
@@ -216,7 +212,7 @@ namespace WolcenMod
             chest.Panels.Find((p) => p.Id == chosen_Panel.Id).InventoryGrid.Add(item);
 
             // Save updated chest data
-            File.WriteAllText(path, JsonConvert.SerializeObject(chest, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+            File.WriteAllText(Properties.Settings.Default.playerchest_path, JsonConvert.SerializeObject(chest, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
 
             Dispatcher.Invoke(() => button_save.IsEnabled = true);
         }
