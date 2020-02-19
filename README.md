@@ -7,7 +7,7 @@
 * Maps
 * Backup file
 
-*I might have missed some items*
+*I might have missed some items,*
 *this only works for offline mode*
 
 **Link to release**
