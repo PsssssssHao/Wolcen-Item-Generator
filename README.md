@@ -10,5 +10,5 @@
 *I might have missed some items,*
 *this only works for offline mode*
 
-**Link to release**
-[GitHub](https://github.com/rick0335/Wolcen-Item-Generator/releases/tag/1.0.0)
+**Download link**
+[GitHub](https://github.com/rick0335/Wolcen-Item-Generator/releases/download/1.0.0/WolcenItemGenerator.rar)
