@@ -1,0 +1,46 @@
+﻿Quality {0..5}
+
+Types {
+	Gem = 6
+	Map = 9
+	Reagent = 10
+	Weapon = 3
+	Armor = 2
+}
+
+
+
+-- GEMS --
+Genesis Stone = Special_gem
+Shadow = Shadow_Gem_Tier_01
+Sacred = Sacred_Gem_Tier_01
+Lightning = Lightning_Gem_Tier_01
+Aether = Umbra_Gem_Tier_01
+Frost = Frost_Gem_Tier_01
+Fire = Fire_Gem_Tier_01
+Attack speed = Toughness_Gem_Tier_01
+Poison = Poison_Gem_Tier_01
+Physical = Physical_Gem_Tier_01
+Rend = Rend_Gem_Tier_01
+Crit dmg / chance = Utility_Gem_Tier_01
+
+
+-- REAGENTS --
+Entropy Orb = Reagent_1
+Greater Entropy Orb = Reagent_1_Legendary
+
+Ohm's Echo = Reagent_2
+Greater Ohm's Echo = Reagent_2_Legendary
+
+Erieban Tear = Reagent_3
+Greater Erieban Tear = Reagent_3_Legendary
+
+
+-- MAPS -- Type 9
+Map: Wealth Omen's location = npc2_consumable_03
+Map: Bounty hunt = npc2_consumable_05
+Reverie Incense: Goldroot = npc2_consumable_09
+Reverie Incense: Memory's Echo = npc2_consumable_12
+Reverie Incense: Hyperconcentrated Memory's Echo = npc2_consumable_13
+Reverie Incense: Pure Memory's Echo = npc2_consumable_14
+
