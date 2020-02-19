@@ -1,5 +1,5 @@
 ---
-layout-default
+layout: default
 ---
 
 # Wolcen Item Generator
